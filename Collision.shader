@@ -24,8 +24,6 @@
 		struct Input {
 			float2 uv_MainTex;
 			float2 uv_Emission;
-			
-			float4 screenPos;
 		};
 		struct appdata {
 			float4 vertex : POSITION;
