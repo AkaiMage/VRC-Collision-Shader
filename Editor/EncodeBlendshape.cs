@@ -110,14 +110,14 @@ public class EncodeBlendshape : EditorWindow
 	}
 
 	// you can also find this on StackOverflow
-    private static readonly int[] MultiplyDeBrujinBitPosition = new int[32]
-    {
-        0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
-        8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
-    };
-    private static int FloorLogBase2(int v)
-    {
-        v |= v >> 1; v |= v >> 2; v |= v >> 4; v |= v >> 8; v |= v >> 16;
-        return MultiplyDeBrujinBitPosition[(uint)(v * 0x07C4ACDDU) >> 27];
-    }
+	private static readonly int[] MultiplyDeBrujinBitPosition = new int[32]
+	{
+		0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
+		8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
+	};
+	private static int FloorLogBase2(int v)
+	{
+		v |= v >> 1; v |= v >> 2; v |= v >> 4; v |= v >> 8; v |= v >> 16;
+		return MultiplyDeBrujinBitPosition[(uint)(v * 0x07C4ACDDU) >> 27];
+	}
 }
