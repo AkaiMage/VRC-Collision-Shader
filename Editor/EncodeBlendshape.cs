@@ -88,7 +88,7 @@ public class EncodeBlendshape : EditorWindow
 			importer.textureCompression = TextureImporterCompression.Uncompressed;
 			importer.SaveAndReimport();
 			
-			Material material = new Material(Shader.Find("RedMage/Collision"));
+			Material material = new Material(Shader.Find("RedMage/Collision Metallic"));
 			material.SetTexture("_BlendshapeLookupMap", (Texture2D) AssetDatabase.LoadAssetAtPath(imagePath, typeof(Texture2D)));
 			material.SetVector("_CompressionFactor", new Vector4(scale.x, scale.y, scale.z, 0));
 			material.SetVector("_CompressionOffset", new Vector4(offset.x, offset.y, offset.z, 0));
@@ -110,14 +110,14 @@ public class EncodeBlendshape : EditorWindow
 	}
 
 	// you can also find this on StackOverflow
-	private static readonly int[] MultiplyDeBrujinBitPosition = new int[32]
-	{
-		0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
-		8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
-	};
-	private static int FloorLogBase2(int v)
-	{
-		v |= v >> 1; v |= v >> 2; v |= v >> 4; v |= v >> 8; v |= v >> 16;
-		return MultiplyDeBrujinBitPosition[(uint)(v * 0x07C4ACDDU) >> 27];
-	}
+    private static readonly int[] MultiplyDeBrujinBitPosition = new int[32]
+    {
+        0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
+        8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
+    };
+    private static int FloorLogBase2(int v)
+    {
+        v |= v >> 1; v |= v >> 2; v |= v >> 4; v |= v >> 8; v |= v >> 16;
+        return MultiplyDeBrujinBitPosition[(uint)(v * 0x07C4ACDDU) >> 27];
+    }
 }
